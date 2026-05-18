@@ -1,0 +1,81 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: 225 29% 5%;
+  --foreground: 220 30% 96%;
+  --card: 225 26% 8%;
+  --card-foreground: 220 30% 96%;
+  --muted: 225 18% 14%;
+  --muted-foreground: 222 14% 67%;
+  --primary: 222 100% 68%;
+  --primary-foreground: 225 29% 5%;
+  --border: 220 20% 18%;
+  --input: 220 20% 18%;
+  --ring: 222 100% 72%;
+}
+
+* {
+  border-color: hsl(var(--border));
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  overflow-x: hidden;
+  background:
+    radial-gradient(circle at 50% -20%, rgba(91, 126, 255, .26), transparent 34rem),
+    radial-gradient(circle at 84% 10%, rgba(39, 211, 186, .14), transparent 30rem),
+    #070a12;
+  color: hsl(var(--foreground));
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  -webkit-font-smoothing: antialiased;
+  text-rendering: geometricPrecision;
+}
+
+::selection {
+  background: rgba(164, 189, 255, .28);
+  color: white;
+}
+
+.premium-grid {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, .055) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, .055) 1px, transparent 1px);
+  background-size: 64px 64px;
+  mask-image: linear-gradient(to bottom, black 0%, black 54%, transparent 92%);
+}
+
+.glass-line {
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, .12),
+    inset 0 -1px 0 rgba(255, 255, 255, .04),
+    0 24px 80px rgba(0, 0, 0, .36);
+}
+
+.text-balance {
+  text-wrap: balance;
+}
+
+.text-pretty {
+  text-wrap: pretty;
+}
+
+.mask-soft {
+  mask-image: linear-gradient(to bottom, transparent 0%, black 9%, black 88%, transparent 100%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: .01ms !important;
+  }
+}
