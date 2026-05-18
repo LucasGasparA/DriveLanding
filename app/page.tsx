@@ -25,12 +25,34 @@ import { cn } from "@/lib/utils";
 
 const navItems = [
   ["Produto", "#produto"],
+  ["Perfis", "#perfis"],
   ["Recursos", "#recursos"],
   ["Resultados", "#resultados"],
   ["FAQ", "#faq"]
 ];
 
 const proof = ["Oficinas premium", "Redes em expansao", "Gestores financeiros", "Operacoes multibox"];
+
+const profiles = [
+  {
+    icon: Wrench,
+    role: "Mecanico",
+    promise: "Ve so o que precisa executar agora.",
+    details: ["OS da vez", "Checklist claro", "Fotos e observacoes", "Status em 1 toque"]
+  },
+  {
+    icon: Timer,
+    role: "Consultor",
+    promise: "Acompanha prazo, aprovacao e cliente sem garimpar mensagens.",
+    details: ["Agenda do dia", "Aprovacoes pendentes", "Veiculos em atraso", "Proximo contato"]
+  },
+  {
+    icon: BarChart3,
+    role: "Dono",
+    promise: "Enxerga margem, gargalos e caixa sem entrar em cada atendimento.",
+    details: ["Receita prevista", "Produtividade", "Margem por OS", "Saude financeira"]
+  }
+];
 
 const features = [
   {
@@ -440,7 +462,7 @@ export default function Home() {
         </nav>
       </header>
 
-      <section className="relative min-h-screen overflow-hidden px-0 pb-20 pt-28 sm:pt-36">
+      <section className="relative overflow-hidden px-0 pb-16 pt-28 sm:pb-20 sm:pt-32">
         <motion.div style={{ y: heroY, opacity }} className="container relative z-10 text-center">
           <motion.div
             className="mx-auto inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[.045] px-3 py-1.5 text-xs font-medium text-zinc-300 shadow-glow backdrop-blur-xl"
@@ -510,14 +532,47 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="produto" className="container py-24 sm:py-32">
+      <section id="produto" className="container py-20 sm:py-28">
         <SectionIntro
           label="Produto"
           title="Menos improviso. Mais comando."
           text="A oficina deixa de depender de memoria, papel e mensagens soltas. Cada etapa ganha dono, contexto e proximo passo claro."
         />
 
-        <div className="mt-14 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+        <div id="perfis" className="mt-12 grid gap-4 lg:grid-cols-3">
+          {profiles.map((profile, index) => (
+            <Reveal key={profile.role} delay={index * 0.06}>
+              <article className="h-full rounded-2xl border border-white/10 bg-[#0a101c]/88 p-5 backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 hover:border-cyan-200/25 hover:bg-white/[.045]">
+                <div className="mb-5 flex items-start justify-between gap-4">
+                  <div>
+                    <p className="text-xs font-semibold uppercase tracking-[0.22em] text-cyan-200/70">
+                      Perfil
+                    </p>
+                    <h3 className="mt-2 text-2xl font-semibold tracking-[-0.02em] text-white">
+                      {profile.role}
+                    </h3>
+                  </div>
+                  <div className="grid h-11 w-11 flex-none place-items-center rounded-[12px] border border-white/10 bg-white/[.055] text-cyan-100">
+                    <profile.icon className="h-5 w-5" />
+                  </div>
+                </div>
+                <p className="min-h-12 text-sm leading-6 text-zinc-300">{profile.promise}</p>
+                <div className="mt-5 grid grid-cols-2 gap-2">
+                  {profile.details.map((detail) => (
+                    <div
+                      key={detail}
+                      className="rounded-[10px] border border-white/10 bg-white/[.035] px-3 py-2 text-xs text-zinc-400"
+                    >
+                      {detail}
+                    </div>
+                  ))}
+                </div>
+              </article>
+            </Reveal>
+          ))}
+        </div>
+
+        <div className="mt-8 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
           {features.map((feature, index) => (
             <Reveal key={feature.title} delay={index * 0.08}>
               <div className="group h-full rounded-2xl border border-white/10 bg-white/[.035] p-6 backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 hover:border-white/18 hover:bg-white/[.055]">
@@ -532,7 +587,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="recursos" className="relative border-y border-white/[.06] bg-[#090d16] py-24 sm:py-32">
+      <section id="recursos" className="relative border-y border-white/[.06] bg-[#090d16] py-20 sm:py-28">
         <div className="absolute inset-0 bg-grid-fade bg-[length:72px_72px] opacity-25 [mask-image:linear-gradient(to_bottom,transparent,black_18%,black_78%,transparent)]" />
         <div className="container relative">
           <SectionIntro
@@ -557,7 +612,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="resultados" className="container py-24 sm:py-32">
+      <section id="resultados" className="container py-20 sm:py-28">
         <div className="grid gap-12 lg:grid-cols-[.85fr_1.15fr] lg:items-center">
           <Reveal>
             <p className="mb-4 text-xs font-semibold uppercase tracking-[0.26em] text-cyan-200/70">
@@ -620,7 +675,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="border-y border-white/[.06] bg-white/[.025] py-24 sm:py-32">
+      <section className="border-y border-white/[.06] bg-white/[.025] py-20 sm:py-28">
         <div className="container">
           <SectionIntro
             label="Comparativo"
@@ -645,7 +700,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="faq" className="container py-24 sm:py-32">
+      <section id="faq" className="container py-20 sm:py-28">
         <div className="grid gap-12 lg:grid-cols-[.8fr_1.2fr]">
           <Reveal>
             <p className="mb-4 text-xs font-semibold uppercase tracking-[0.26em] text-cyan-200/70">
