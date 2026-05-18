@@ -1,0 +1,16 @@
+{
+  "name": "DriveLanding",
+  "version": "1.0.0",
+  "description": "Landing page Driveon - Gestão de Oficina Mecânica",
+  "main": "index.html",
+  "scripts": {
+    "start": "http-server -p 8000 -c-1",
+    "dev": "http-server -p 8000 -c-1 -o"
+  },
+  "keywords": ["landing", "driveon"],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "http-server": "^14.1.1"
+  }
+}
